@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant API Data</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f0f2f5; padding: 20px; }
+        .card { 
+            max-width: 900px; margin: auto; background: white; padding: 20px; 
+            border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); 
+        }
+        h2 { color: #1a73e8; border-bottom: 2px solid #e8eaed; padding-bottom: 10px; }
+        #json-output { 
+            background: #282c34; color: #abb2bf; padding: 20px; border-radius: 6px; 
+            overflow-x: auto; font-size: 14px; line-height: 1.5;
+            white-space: pre-wrap; word-wrap: break-word;
+        }
+        .status-badge { 
+            display: inline-block; padding: 5px 12px; border-radius: 20px; 
+            font-size: 12px; font-weight: bold; margin-bottom: 15px;
+        }
+        .loading { background: #fff3cd; color: #856404; }
+        .success { background: #d4edda; color: #155724; }
+        .error { background: #f8d7da; color: #721c24; }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <h2>Restaurant List</h2>
+    <div id="status" class="status-badge loading">Requesting data...</div>
+    
+    <pre id="json-output">Waiting for API response...</pre>
+</div>
+
+<script>
+    async function getRestaurantData() {
+        const roomId = "7aa535eb-fc77-4797-929f-c7e8fa1c0045";
+        // Constructing the URL based on your provided format
+        const url = `https://dashboard.thedigitalhotelier.com/api/${roomId}/restaurants?b=kit`;
+        
+        const outputElement = document.getElementById('json-output');
+        const statusElement = document.getElementById('status');
+
+        try {
+            const response = await fetch(url);
+
+            if (!response.ok) {
+                throw new Error(`Status: ${response.status} - ${response.statusText}`);
+            }
+
+            const data = await response.json();
+
+            // Success: Update UI and display JSON
+            statusElement.className = "status-badge success";
+            statusElement.textContent = "Data Loaded Successfully";
+            outputElement.textContent = JSON.stringify(data, null, 2);
+
+        } catch (error) {
+            // Error Handling
+            statusElement.className = "status-badge error";
+            statusElement.textContent = "Connection Error";
+            outputElement.innerHTML = `<span style="color: #e06c75;">Error: ${error.message}</span>\n\nCheck the browser console for CORS or network issues.`;
+            console.error("API Fetch Error:", error);
+        }
+    }
+
+    // Run on load
+    getRestaurantData();
+</script>
+
+</body>
+</html>

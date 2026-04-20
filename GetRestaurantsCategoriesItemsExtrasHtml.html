@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Item Extractor</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, sans-serif; background: #f4f7f6; padding: 20px; }
+        .card { max-width: 900px; margin: auto; background: white; padding: 25px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+        h2 { color: #2c3e50; margin-top: 0; }
+        #json-output { 
+            background: #1e1e1e; color: #75beff; padding: 20px; border-radius: 8px; 
+            overflow-x: auto; white-space: pre-wrap; font-family: 'Consolas', monospace;
+            border-left: 5px solid #007bff;
+        }
+        .status-badge { display: inline-block; padding: 6px 15px; border-radius: 50px; font-size: 13px; font-weight: 600; margin-bottom: 15px; }
+        .success { background: #e6ffed; color: #22863a; border: 1px solid #22863a; }
+        .error { background: #ffeef0; color: #d73a49; border: 1px solid #d73a49; }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <h2>Extracted Items & Options</h2>
+    <div id="status" class="status-badge">Connecting to API...</div>
+    <pre id="json-output">Loading data structure...</pre>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        fetchAndProcessData();
+    });
+
+async function fetchAndProcessData() {
+    const room_id = "7aa535eb-fc77-4797-929f-c7e8fa1c0045";
+    const hotel_id = "3a4797e0-d71b-4691-92f8-82fa0b33d19d";
+    const cat_id = "8620";
+    const url = `https://dashboard.thedigitalhotelier.com/api/${room_id}/restaurant/${hotel_id}?cat=${cat_id}`;
+    
+    const output = document.getElementById('json-output');
+    const status = document.getElementById('status');
+
+    try {
+        const response = await fetch(url);
+        if (!response.ok) throw new Error(`HTTP Error: ${response.status}`);
+
+        const rawResponse = await response.json();
+        const itemsList = rawResponse?.data?.items?.data;
+
+        if (itemsList && Array.isArray(itemsList)) {
+            
+            // 1. FILTER: Keep only items where extrasWithOptions exists AND has items
+            const filteredItems = itemsList.filter(item => 
+                item.extrasWithOptions && item.extrasWithOptions.length > 0
+            );
+
+            // 2. MAP: Format the remaining items
+            const result = filteredItems.map(item => ({
+                id: item.id,
+                name: item.name,
+                extrasWithOptions: item.extrasWithOptions
+            }));
+
+            status.className = "status-badge success";
+            status.textContent = `Successfully processed ${result.length} items with options`;
+            output.textContent = JSON.stringify(result, null, 2);
+
+        } else {
+            throw new Error("Could not find the items list in the API response structure.");
+        }
+
+    } catch (error) {
+        status.className = "status-badge error";
+        status.textContent = "Processing Failed";
+        output.textContent = `Error: ${error.message}`;
+    }
+}
+</script>
+
+</body>
+</html>
