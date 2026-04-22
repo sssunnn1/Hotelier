@@ -1,134 +1,43 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hotelier Master Database - AI Feed V2</title>
-    <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f8fafc; margin: 0; padding: 40px; color: #333; line-height: 1.5; }
-        h1 { color: #0f172a; border-bottom: 3px solid #0284c7; padding-bottom: 10px; margin-bottom: 40px; }
-        h2 { color: #334155; margin-top: 50px; margin-bottom: 15px; border-bottom: 2px solid #e2e8f0; padding-bottom: 5px; }
-        
-        table { width: 100%; border-collapse: collapse; text-align: left; margin-bottom: 30px; background: #fff; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
-        th, td { padding: 12px 15px; border: 1px solid #e2e8f0; vertical-align: top; }
-        th { background-color: #f1f5f9; color: #0f172a; font-weight: bold; font-size: 0.9rem; text-transform: uppercase; }
-        tr:hover { background-color: #f8fafc; }
-        
-        .id-tag { display: inline-block; padding: 4px 8px; border-radius: 4px; font-family: Consolas, monospace; font-weight: bold; background: #e2e8f0; border: 1px solid #cbd5e1; color: #0f172a; }
-        .open-status { color: #16a34a; font-weight: bold; }
-        .closed-status { color: #dc2626; font-weight: bold; }
-        .price-tag { color: #16a34a; font-weight: bold; }
-        .cuisine-info { font-style: italic; color: #475569; font-size: 0.95rem; }
-    </style>
-</head>
-<body>
-
-    <h1>Hotelier Master Knowledge Base</h1>
-
-    <h2>1. Restaurants (Main Info & Cuisines)</h2>
-    <table>
-        <thead>
-            <tr>
-                <th width="10%">Restaurant ID</th>
-                <th width="25%">Restaurant Name</th>
-                <th width="10%">Status</th>
-                <th width="35%">Cuisines & Food Types</th>
-                <th width="20%">Opens At</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><span class="id-tag">1</span></td>
-                <td>Atlantis Circle</td>
-                <td class="open-status">Open</td>
-                <td class="cuisine-info">International, Fresh Seafood, Premium Steaks, Mediterranean Grill</td>
-                <td>12:00 AM</td>
-            </tr>
-            <tr>
-                <td><span class="id-tag">2</span></td>
-                <td>Awards</td>
-                <td class="closed-status">Closed</td>
-                <td class="cuisine-info">International, Gourmet Burgers, Continental Dishes</td>
-                <td>8:00 AM</td>
-            </tr>
-            <tr>
-                <td><span class="id-tag">298</span></td>
-                <td>Micros Restaurant</td>
-                <td class="closed-status">Closed</td>
-                <td class="cuisine-info">Authentic Arabic, Oriental Grills, Mandi, Traditional Lamb Dishes</td>
-                <td>8:00 AM</td>
-            </tr>
-            <tr>
-                <td><span class="id-tag">513</span></td>
-                <td>Deliverect Restaurant</td>
-                <td class="open-status">Open</td>
-                <td class="cuisine-info">Oriental Fusion, Chinese Specialties, Seafood Mix, Dim Sum</td>
-                <td>12:00 AM</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <h2>2. Categories</h2>
-    <table>
-        <thead>
-            <tr>
-                <th>Category ID</th>
-                <th>Category Name</th>
-                <th>Restaurant ID</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr><td><span class="id-tag">8551</span></td><td>Drinks</td><td><span class="id-tag">513</span></td></tr>
-            <tr><td><span class="id-tag">8619</span></td><td>Steak & Burgers</td><td><span class="id-tag">513</span></td></tr>
-            <tr><td><span class="id-tag">8553</span></td><td>Sides</td><td><span class="id-tag">513</span></td></tr>
-            <tr><td><span class="id-tag">8554</span></td><td>Poke Bowls</td><td><span class="id-tag">513</span></td></tr>
-            <tr><td><span class="id-tag">8620</span></td><td>Pizzas</td><td><span class="id-tag">513</span></td></tr>
-            <tr><td><span class="id-tag">8556</span></td><td>Chicken</td><td><span class="id-tag">513</span></td></tr>
-        </tbody>
-    </table>
-
-    <h2>3. Items</h2>
-    <table>
-        <thead>
-            <tr>
-                <th>Item ID</th>
-                <th>Item Name</th>
-                <th>Price</th>
-                <th>Category ID</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr><td><span class="id-tag">53308</span></td><td>Build your own Pizza</td><td class="price-tag">8 AED</td><td><span class="id-tag">8620</span></td></tr>
-            <tr><td><span class="id-tag">53309</span></td><td>The Hawaiian</td><td class="price-tag">8 AED</td><td><span class="id-tag">8620</span></td></tr>
-        </tbody>
-    </table>
-
-    <h2>4. Extras & Modifiers</h2>
-    <table>
-        <thead>
-            <tr>
-                <th>Option ID</th>
-                <th>Option Name</th>
-                <th>Price Add-on</th>
-                <th>Group ID</th>
-                <th>Group Name</th>
-                <th>Item ID</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr><td><span class="id-tag">198407</span></td><td>Pepperoni</td><td>0 AED</td><td><span class="id-tag">1790</span></td><td>Choose your First Topping (Max 1)</td><td><span class="id-tag">53308</span></td></tr>
-            <tr><td><span class="id-tag">198411</span></td><td>Bacon</td><td>0 AED</td><td><span class="id-tag">1790</span></td><td>Choose your First Topping (Max 1)</td><td><span class="id-tag">53308</span></td></tr>
-            <tr><td><span class="id-tag">199380</span></td><td>Red onions</td><td>0 AED</td><td><span class="id-tag">1790</span></td><td>Choose your First Topping (Max 1)</td><td><span class="id-tag">53308</span></td></tr>
-            <tr><td><span class="id-tag">179802</span></td><td>Mushroom</td><td>0 AED</td><td><span class="id-tag">1790</span></td><td>Choose your First Topping (Max 1)</td><td><span class="id-tag">53308</span></td></tr>
-            <tr><td><span class="id-tag">199381</span></td><td>Red Pepper</td><td>0 AED</td><td><span class="id-tag">1790</span></td><td>Choose your First Topping (Max 1)</td><td><span class="id-tag">53308</span></td></tr>
-            
-            <tr><td><span class="id-tag">198407</span></td><td>Pepperoni</td><td class="price-tag">+1 AED</td><td><span class="id-tag">921</span></td><td>Add Extra Toppings (Max 5)</td><td><span class="id-tag">53308</span></td></tr>
-            <tr><td><span class="id-tag">198411</span></td><td>Bacon</td><td class="price-tag">+1 AED</td><td><span class="id-tag">921</span></td><td>Add Extra Toppings (Max 5)</td><td><span class="id-tag">53308</span></td></tr>
-            <tr><td><span class="id-tag">199380</span></td><td>Red onions</td><td class="price-tag">+1 AED</td><td><span class="id-tag">921</span></td><td>Add Extra Toppings (Max 5)</td><td><span class="id-tag">53308</span></td></tr>
-            <tr><td><span class="id-tag">179802</span></td><td>Mushroom</td><td class="price-tag">+1 AED</td><td><span class="id-tag">921</span></td><td>Add Extra Toppings (Max 5)</td><td><span class="id-tag">53308</span></td></tr>
-            <tr><td><span class="id-tag">199381</span></td><td>Red Pepper</td><td class="price-tag">+1 AED</td><td><span class="id-tag">921</span></td><td>Add Extra Toppings (Max 5)</td><td><span class="id-tag">53308</span></td></tr>
-        </tbody>
-    </table>
-
-</body>
-</html>
+<!-- Replace your current Table 1 with this -->
+<h2>1. Restaurants List</h2>
+<table id="restaurant-table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Status</th>
+            <th>Cuisine</th>
+            <th>Hours</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>1</td>
+            <td><strong>Atlantis Circle</strong></td>
+            <td>Open</td>
+            <td>International, Fresh Seafood, Premium Steaks, Mediterranean Grill</td>
+            <td>12:00 AM</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td><strong>Awards</strong></td>
+            <td>Closed</td>
+            <td>International, Gourmet Burgers, Continental Dishes</td>
+            <td>8:00 AM</td>
+        </tr>
+        <tr>
+            <td>298</td>
+            <td><strong>Micros Restaurant</strong></td>
+            <td>Closed</td>
+            <td>Authentic Arabic, Oriental Grills, Mandi, Traditional Lamb Dishes</td>
+            <td>8:00 AM</td>
+        </tr>
+        <tr>
+            <td>513</td>
+            <td><strong>Deliverect Restaurant</strong></td>
+            <td>Open</td>
+            <td>Oriental Fusion, Chinese Specialties, Seafood Mix, Dim Sum</td>
+            <td>12:00 AM</td>
+        </tr>
+    </tbody>
+</table>
