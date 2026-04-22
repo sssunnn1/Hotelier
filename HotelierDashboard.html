@@ -1,43 +1,68 @@
-<!-- Replace your current Table 1 with this -->
-<h2>1. Restaurants List</h2>
-<table id="restaurant-table">
-    <thead>
-        <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Status</th>
-            <th>Cuisine</th>
-            <th>Hours</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>1</td>
-            <td><strong>Atlantis Circle</strong></td>
-            <td>Open</td>
-            <td>International, Fresh Seafood, Premium Steaks, Mediterranean Grill</td>
-            <td>12:00 AM</td>
-        </tr>
-        <tr>
-            <td>2</td>
-            <td><strong>Awards</strong></td>
-            <td>Closed</td>
-            <td>International, Gourmet Burgers, Continental Dishes</td>
-            <td>8:00 AM</td>
-        </tr>
-        <tr>
-            <td>298</td>
-            <td><strong>Micros Restaurant</strong></td>
-            <td>Closed</td>
-            <td>Authentic Arabic, Oriental Grills, Mandi, Traditional Lamb Dishes</td>
-            <td>8:00 AM</td>
-        </tr>
-        <tr>
-            <td>513</td>
-            <td><strong>Deliverect Restaurant</strong></td>
-            <td>Open</td>
-            <td>Oriental Fusion, Chinese Specialties, Seafood Mix, Dim Sum</td>
-            <td>12:00 AM</td>
-        </tr>
-    </tbody>
-</table>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hotelier Master Database</title>
+</head>
+<body>
+
+    <h1>Hotelier Master Knowledge Base</h1>
+    <p>This page contains the master list for Restaurants, Categories, Items, and Extras.</p>
+
+    <!-- Adding a Table of Contents helps crawlers identify all sections -->
+    <ul>
+        <li><a href="#sec1">Section 1: Restaurant List</a></li>
+        <li><a href="#sec2">Section 2: Menu Categories</a></li>
+        <li><a href="#sec3">Section 3: Food Items</a></li>
+        <li><a href="#sec4">Section 4: Item Customizations</a></li>
+    </ul>
+
+    <h2 id="sec1">Section 1: Restaurant List</h2>
+    <table>
+        <thead>
+            <tr><th>Restaurant Name</th><th>Status</th><th>Cuisine Type</th><th>Hours</th></tr>
+        </thead>
+        <tbody>
+            <tr><td>Atlantis Circle</td><td>Open</td><td>International, Seafood, Steaks</td><td>12:00 AM</td></tr>
+            <tr><td>Awards</td><td>Closed</td><td>International, Burgers</td><td>8:00 AM</td></tr>
+            <tr><td>Micros Restaurant</td><td>Closed</td><td>Arabic, Grills, Mandi</td><td>8:00 AM</td></tr>
+            <tr><td>Deliverect Restaurant</td><td>Open</td><td>Oriental Fusion, Chinese</td><td>12:00 AM</td></tr>
+        </tbody>
+    </table>
+
+    <h2 id="sec2">Section 2: Menu Categories</h2>
+    <table>
+        <thead>
+            <tr><th>Category Name</th><th>Belongs to Restaurant ID</th></tr>
+        </thead>
+        <tbody>
+            <tr><td>Drinks</td><td>513</td></tr>
+            <tr><td>Steak & Burgers</td><td>513</td></tr>
+            <tr><td>Pizzas</td><td>513</td></tr>
+        </tbody>
+    </table>
+
+    <h2 id="sec3">Section 3: Food Items</h2>
+    <table>
+        <thead>
+            <tr><th>Item Name</th><th>Price</th><th>Category Name</th></tr>
+        </thead>
+        <tbody>
+            <tr><td>Build your own Pizza</td><td>8 AED</td><td>Pizzas</td></tr>
+            <tr><td>The Hawaiian</td><td>8 AED</td><td>Pizzas</td></tr>
+        </tbody>
+    </table>
+
+    <h2 id="sec4">Section 4: Item Customizations</h2>
+    <table>
+        <thead>
+            <tr><th>Option Name</th><th>Price</th><th>Group Name</th></tr>
+        </thead>
+        <tbody>
+            <tr><td>Pepperoni</td><td>0 AED</td><td>Toppings</td></tr>
+            <tr><td>Bacon</td><td>1 AED</td><td>Extra Toppings</td></tr>
+        </tbody>
+    </table>
+
+</body>
+</html>
